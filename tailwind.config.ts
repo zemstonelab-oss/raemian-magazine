@@ -21,6 +21,8 @@ const config: Config = {
         },
       },
       fontFamily: {
+        display: ['var(--font-display)', 'Montserrat', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Cormorant Garamond', 'serif'],
         serif: ['var(--font-serif)', 'Noto Serif KR', 'serif'],
         sans: ['var(--font-sans)', 'Noto Sans KR', 'sans-serif'],
       },

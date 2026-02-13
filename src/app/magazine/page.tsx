@@ -21,8 +21,8 @@ export default function MagazinePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">Stories & Articles</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-light text-white mb-12">Magazine</h1>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">Stories & Articles</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-light text-white mb-12">Magazine</h1>
         </motion.div>
 
         {/* Filter tabs */}
@@ -31,7 +31,7 @@ export default function MagazinePage() {
             <button
               key={key}
               onClick={() => setFilter(key as FilterKey)}
-              className={`px-5 py-2 text-xs tracking-[0.15em] uppercase border transition-all duration-300 ${
+              className={`font-display px-5 py-2 text-xs tracking-[0.15em] uppercase border transition-all duration-300 ${
                 filter === key
                   ? 'border-gold text-gold bg-gold/10'
                   : 'border-white/10 text-gray-400 hover:border-gold/50 hover:text-gold'

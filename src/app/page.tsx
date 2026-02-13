@@ -31,8 +31,8 @@ export default function Home() {
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative text-center z-10 px-6"
         >
-          <p className="text-xs tracking-[0.4em] uppercase text-gold mb-6">Premium Lifestyle Magazine</p>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.15em] text-white mb-6">
+          <p className="font-display text-xs tracking-[0.4em] uppercase text-gold mb-6">Premium Lifestyle Magazine</p>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.15em] text-white mb-6">
             RAEMIAN<br />MAGAZINE
           </h1>
           <p className="text-sm md:text-base text-gray-300 font-light tracking-wide max-w-lg mx-auto">
@@ -53,7 +53,7 @@ export default function Home() {
       {/* Latest Articles */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <AnimatedSection>
-          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">Latest Stories</p>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">Latest Stories</p>
           <h2 className="font-serif text-3xl md:text-4xl font-light text-white mb-16">최신 매거진</h2>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -68,8 +68,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-dark-gray" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <AnimatedSection>
-            <p className="text-xs tracking-[0.4em] uppercase text-gold mb-8">Brand Philosophy</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-light text-white mb-8 leading-tight">
+            <p className="font-heading text-xs tracking-[0.4em] uppercase text-gold mb-8">Brand Philosophy</p>
+            <h2 className="font-heading text-3xl md:text-5xl font-light text-white mb-8 leading-tight italic">
               Beyond<br />
               <span className="text-gold">Expectations</span>
             </h2>

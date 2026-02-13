@@ -9,8 +9,8 @@ export default function GalleryPage() {
     <div className="pt-28 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">Visual Archive</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-light text-white mb-16">Gallery</h1>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">Visual Archive</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-light text-white mb-16">Gallery</h1>
         </motion.div>
 
         {/* Masonry-like grid */}

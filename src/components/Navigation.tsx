@@ -30,7 +30,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="font-serif text-xl tracking-[0.3em] text-gold">
+          <Link href="/" className="font-display text-xl font-light tracking-[0.4em] text-gold">
             RAEMIAN
           </Link>
 
@@ -40,7 +40,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm tracking-[0.15em] uppercase text-gray-300 hover:text-gold transition-colors duration-300"
+                className="font-display text-sm tracking-[0.15em] uppercase text-gray-300 hover:text-gold transition-colors duration-300"
               >
                 {link.label}
               </Link>
@@ -79,7 +79,7 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-serif text-2xl tracking-[0.2em] text-gray-200 hover:text-gold transition-colors"
+                  className="font-display text-2xl font-light tracking-[0.2em] text-gray-200 hover:text-gold transition-colors"
                 >
                   {link.label}
                 </Link>

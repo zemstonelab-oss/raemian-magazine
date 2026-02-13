@@ -4,9 +4,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           <div>
-            <p className="font-serif text-xl tracking-[0.3em] text-gold mb-4">RAEMIAN</p>
+            <p className="font-display text-xl font-light tracking-[0.4em] text-gold mb-4">RAEMIAN</p>
             <p className="text-sm text-gray-500 leading-relaxed">
-              Beyond Expectations<br />
+              <span className="font-heading italic">Beyond Expectations</span><br />
               래미안이 전하는 프리미엄 라이프스타일
             </p>
           </div>

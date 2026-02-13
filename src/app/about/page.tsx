@@ -18,8 +18,8 @@ export default function AboutPage() {
       {/* Hero */}
       <div className="max-w-4xl mx-auto px-6 text-center mb-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">Brand Story</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-light text-white mb-8">About Raemian</h1>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">Brand Story</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-light text-white mb-8">About Raemian</h1>
           <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto">
             래미안은 2000년 런칭 이래 대한민국 프리미엄 주거의 기준을 만들어 왔습니다.
             &quot;Beyond Expectations&quot; — 기대 이상의 가치를 통해 삶의 품격을 높여갑니다.
@@ -37,7 +37,7 @@ export default function AboutPage() {
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <div className="text-center">
-                <h3 className="font-serif text-2xl text-gold mb-4">{item.title}</h3>
+                <h3 className="font-heading text-2xl text-gold mb-4">{item.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             </AnimatedSection>
@@ -48,7 +48,7 @@ export default function AboutPage() {
       {/* Timeline */}
       <section className="max-w-3xl mx-auto px-6">
         <AnimatedSection>
-          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">History</p>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">History</p>
           <h2 className="font-serif text-3xl text-white mb-16">연혁</h2>
         </AnimatedSection>
 

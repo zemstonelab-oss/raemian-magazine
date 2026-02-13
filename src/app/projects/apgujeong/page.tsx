@@ -133,7 +133,7 @@ export default function ApgujeongPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-[#c9a962] text-xs tracking-[6px] uppercase mb-6 font-sans"
+            className="text-[#c9a962] text-xs tracking-[6px] uppercase mb-6 font-heading"
           >
             Beyond Expectations
           </motion.p>
@@ -149,7 +149,7 @@ export default function ApgujeongPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
-            className="mt-6 text-gray-400 text-sm tracking-[3px]"
+            className="mt-6 text-gray-400 text-sm tracking-[3px] font-display font-light"
           >
             RAEMIAN APGUJEONG SAMSUNG
           </motion.p>
@@ -181,7 +181,7 @@ export default function ApgujeongPage() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center">
           <FadeIn>
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8">The Legacy of Apgujeong</p>
+            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8 font-heading">The Legacy of Apgujeong</p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8">
@@ -207,7 +207,7 @@ export default function ApgujeongPage() {
       <section className="min-h-screen flex items-center py-32 px-6">
         <div className="max-w-6xl mx-auto w-full">
           <FadeIn className="text-center mb-20">
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4">Location Value</p>
+            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">Location Value</p>
             <h2 className="font-serif text-3xl md:text-5xl font-light">
               대체 불가능한 입지
             </h2>
@@ -243,7 +243,7 @@ export default function ApgujeongPage() {
       <section className="min-h-screen py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="text-center mb-6">
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4">Global Landmarks</p>
+            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">Global Landmarks</p>
             <h2 className="font-serif text-3xl md:text-5xl font-light mb-4">
               삼성이 건설한<br />세계적 랜드마크
             </h2>
@@ -279,7 +279,7 @@ export default function ApgujeongPage() {
       <section className="min-h-screen py-32">
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn className="text-center mb-20">
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4">Construction Technology</p>
+            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">Construction Technology</p>
             <h2 className="font-serif text-3xl md:text-5xl font-light">
               기술이 만드는 차이
             </h2>
@@ -300,7 +300,7 @@ export default function ApgujeongPage() {
             </FadeIn>
             <FadeIn direction="right">
               <div>
-                <p className="text-[#c9a962] text-xs tracking-[4px] mb-4">DDP — Dongdaemun Design Plaza</p>
+                <p className="text-[#c9a962] text-xs tracking-[4px] mb-4 font-heading">DDP — Dongdaemun Design Plaza</p>
                 <h3 className="font-serif text-2xl md:text-3xl font-light mb-6">
                   불가능을 가능으로 만든<br />비정형 건축의 정수
                 </h3>
@@ -328,7 +328,7 @@ export default function ApgujeongPage() {
             </FadeIn>
             <FadeIn direction="right" className="md:order-1">
               <div>
-                <p className="text-[#c9a962] text-xs tracking-[4px] mb-4">Incheon Bridge</p>
+                <p className="text-[#c9a962] text-xs tracking-[4px] mb-4 font-heading">Incheon Bridge</p>
                 <h3 className="font-serif text-2xl md:text-3xl font-light mb-6">
                   대한민국을 잇는<br />21.38km의 도전
                 </h3>
@@ -351,7 +351,7 @@ export default function ApgujeongPage() {
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <FadeIn className="text-center px-6">
-              <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4">View-Specialized Design</p>
+              <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">View-Specialized Design</p>
               <h3 className="font-serif text-2xl md:text-4xl font-light">
                 조망특화 설계 · BIM 기술 · 초고층 시공력
               </h3>
@@ -371,7 +371,7 @@ export default function ApgujeongPage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <FadeIn>
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8">Vision</p>
+            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8 font-heading">Vision</p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug">
@@ -400,7 +400,7 @@ export default function ApgujeongPage() {
       {/* ══════ FOOTER ══════ */}
       <footer className="border-t border-white/10 py-16 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="font-serif text-[#c9a962] tracking-[4px] text-sm">RAEMIAN</p>
+          <p className="font-display font-light text-[#c9a962] tracking-[4px] text-sm">RAEMIAN</p>
           <p className="text-gray-600 text-xs tracking-[2px]">
             © 2025 Samsung C&T Corporation. All rights reserved.
           </p>
