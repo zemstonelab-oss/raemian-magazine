@@ -13,7 +13,7 @@ export default function MagazinePage() {
   const filtered = filter === 'all' ? articles : articles.filter((a) => a.category === filter);
 
   return (
-    <div className="pt-28 pb-24">
+    <div className="pt-28 pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -21,8 +21,8 @@ export default function MagazinePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-heading text-xs tracking-[0.3em] uppercase text-gold mb-3">Stories & Articles</p>
-          <h1 className="font-heading text-4xl md:text-5xl font-light text-white mb-12">Magazine</h1>
+          <p className="font-heading text-xs tracking-[0.3em] uppercase text-teal mb-3">Stories & Articles</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-light text-gray-900 mb-12">Magazine</h1>
         </motion.div>
 
         {/* Filter tabs */}
@@ -31,10 +31,10 @@ export default function MagazinePage() {
             <button
               key={key}
               onClick={() => setFilter(key as FilterKey)}
-              className={`font-display px-5 py-2 text-xs tracking-[0.15em] uppercase border transition-all duration-300 ${
+              className={`font-display px-5 py-2 text-xs tracking-[0.15em] uppercase border rounded-sm transition-all duration-300 ${
                 filter === key
-                  ? 'border-gold text-gold bg-gold/10'
-                  : 'border-white/10 text-gray-400 hover:border-gold/50 hover:text-gold'
+                  ? 'border-teal text-white bg-teal'
+                  : 'border-gray-200 text-gray-500 hover:border-teal hover:text-teal'
               }`}
             >
               {label}
@@ -50,7 +50,7 @@ export default function MagazinePage() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-gray-500 text-center py-20">해당 카테고리의 아티클이 없습니다.</p>
+          <p className="text-gray-400 text-center py-20">해당 카테고리의 아티클이 없습니다.</p>
         )}
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Navigation() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-dark/90 backdrop-blur-md' : 'bg-transparent'
+          scrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -37,7 +37,9 @@ export default function Navigation() {
               <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
               <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
             </svg>
-            <span className="font-display text-xl font-light tracking-[0.4em] text-gray-100">
+            <span className={`font-display text-xl font-light tracking-[0.4em] transition-colors duration-500 ${
+              scrolled ? 'text-gray-900' : 'text-white'
+            }`}>
               RAEMIAN
             </span>
           </Link>
@@ -48,7 +50,11 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-display text-sm tracking-[0.15em] uppercase text-gray-300 hover:text-gold transition-colors duration-300"
+                className={`font-display text-sm tracking-[0.15em] uppercase transition-colors duration-300 ${
+                  scrolled
+                    ? 'text-gray-600 hover:text-teal'
+                    : 'text-white/80 hover:text-white'
+                }`}
               >
                 {link.label}
               </Link>
@@ -61,9 +67,9 @@ export default function Navigation() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="메뉴"
           >
-            <span className={`block w-6 h-px bg-white transition-transform duration-300 ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
-            <span className={`block w-6 h-px bg-white transition-opacity duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-px bg-white transition-transform duration-300 ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
           </button>
         </div>
       </nav>
@@ -75,7 +81,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-white/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link, i) => (
               <motion.div
@@ -87,7 +93,7 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-display text-2xl font-light tracking-[0.2em] text-gray-200 hover:text-gold transition-colors"
+                  className="font-display text-2xl font-light tracking-[0.2em] text-gray-800 hover:text-teal transition-colors"
                 >
                   {link.label}
                 </Link>

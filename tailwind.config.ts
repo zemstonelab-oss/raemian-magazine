@@ -15,9 +15,14 @@ const config: Config = {
           dark: '#a88b3d',
         },
         dark: {
-          DEFAULT: '#0a0a0a',
-          gray: '#1a1a1a',
-          lighter: '#2a2a2a',
+          DEFAULT: '#1a1a1a',
+          gray: '#f5f5f5',
+          lighter: '#fafafa',
+        },
+        teal: {
+          DEFAULT: '#2a9d8f',
+          light: '#3ab8a8',
+          dark: '#1f7a6f',
         },
       },
       fontFamily: {

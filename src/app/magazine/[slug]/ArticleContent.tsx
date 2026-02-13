@@ -12,7 +12,7 @@ export default function ArticleContent({ article }: { article: Article }) {
       className="max-w-3xl mx-auto px-6 py-20"
     >
       {article.content.map((paragraph, i) => (
-        <p key={i} className="text-gray-300 leading-[2] text-base md:text-lg mb-8 font-light">
+        <p key={i} className="text-gray-600 leading-[2] text-base md:text-lg mb-8 font-light">
           {paragraph}
         </p>
       ))}
