@@ -114,8 +114,8 @@ export default function ApgujeongPage() {
 
   return (
     <main className="text-gray-900 overflow-x-hidden">
-      {/* ══════ SECTION 1 — HERO (dark) ══════ */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* ══════ SECTION 1 — HERO ══════ */}
+      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0">
           <Image
             src="/images/apgujeong/DJI_0806-%ED%8E%B8%EC%A7%91-3_%EB%B3%B4%EC%A0%95.jpg"
@@ -125,7 +125,7 @@ export default function ApgujeongPage() {
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+          <div className="absolute inset-0 bg-white/30" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 text-center px-6">
@@ -133,7 +133,7 @@ export default function ApgujeongPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-[#c9a962] text-xs tracking-[6px] uppercase mb-6 font-heading"
+            className="text-[#2a9d8f] text-xs tracking-[6px] uppercase mb-6 font-heading"
           >
             Beyond Expectations
           </motion.p>
@@ -141,7 +141,7 @@ export default function ApgujeongPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 1.2 }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight text-white"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight text-white drop-shadow-lg"
           >
             압구정 삼성
           </motion.h1>
@@ -149,7 +149,7 @@ export default function ApgujeongPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
-            className="mt-6 text-gray-400 text-sm tracking-[3px] font-display font-light"
+            className="mt-6 text-white/80 text-sm tracking-[3px] font-display font-light drop-shadow"
           >
             RAEMIAN APGUJEONG SAMSUNG
           </motion.p>
@@ -166,39 +166,38 @@ export default function ApgujeongPage() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.8 }}
-            className="w-px h-10 bg-gradient-to-b from-[#c9a962] to-transparent"
+            className="w-px h-10 bg-gradient-to-b from-[#2a9d8f] to-transparent"
           />
         </motion.div>
       </section>
 
-      {/* ══════ SECTION 2 — HERITAGE (dark overlay on image) ══════ */}
-      <section className="relative min-h-screen flex items-center">
-        <ParallaxImage
-          src="/images/apgujeong/RAEMIAN-205s.jpg"
-          alt="원베일리"
-          className="absolute inset-0"
-        />
-        <div className="absolute inset-0 bg-black/60" />
+      {/* ══════ SECTION 2 — HERITAGE ══════ */}
+      <section className="relative min-h-screen flex items-center bg-[#fafafa]">
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center">
           <FadeIn>
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8 font-heading">The Legacy of Apgujeong</p>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-lg mb-16 max-w-3xl mx-auto">
+              <Image src="/images/apgujeong/RAEMIAN-205s.jpg" alt="원베일리" fill className="object-cover" sizes="(max-width:768px) 100vw, 800px" />
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">The Legacy of Apgujeong</p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h2 className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8 text-white">
+            <h2 className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8 text-[#1a1a1a]">
               권력과 여유,<br />
-              <span className="text-[#c9a962]">부와 풍류</span>를<br />
+              <span className="text-[#2a9d8f]">부와 풍류</span>를<br />
               상징하는 이름
             </h2>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <p className="text-gray-300 leading-[2.2] text-sm md:text-base max-w-2xl mx-auto">
+            <p className="text-[#666] leading-[2.2] text-sm md:text-base max-w-2xl mx-auto">
               압구정은 조선시대 한명회가 한강의 절경에 반해 정자를 세운 곳입니다.
               이후 수백 년간 권력과 부, 문화의 중심지로 자리매김했습니다.
               그리고 지금, 대한민국 주거의 새로운 기준이 이곳에서 다시 쓰여집니다.
             </p>
           </FadeIn>
           <FadeIn delay={0.6}>
-            <div className="mt-16 w-16 h-px bg-[#c9a962] mx-auto" />
+            <div className="mt-16 w-16 h-px bg-[#2a9d8f] mx-auto" />
           </FadeIn>
         </div>
       </section>
@@ -239,15 +238,15 @@ export default function ApgujeongPage() {
         />
       </section>
 
-      {/* ══════ SECTION 4 — GLOBAL LANDMARKS (dark) ══════ */}
-      <section className="min-h-screen py-32 px-6 bg-[#0a0a0a] text-white">
+      {/* ══════ SECTION 4 — GLOBAL LANDMARKS ══════ */}
+      <section className="min-h-screen py-32 px-6 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="text-center mb-6">
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">Global Landmarks</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-light mb-4">
+            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading">Global Landmarks</p>
+            <h2 className="font-serif text-3xl md:text-5xl font-light mb-4 text-[#1a1a1a]">
               삼성이 건설한<br />세계적 랜드마크
             </h2>
-            <p className="text-gray-500 text-sm max-w-xl mx-auto">
+            <p className="text-[#666] text-sm max-w-xl mx-auto">
               삼성물산 건설부문은 세계 최고층 빌딩을 포함한 글로벌 랜드마크를 건설해온
               대한민국 대표 건설사입니다.
             </p>
@@ -256,18 +255,18 @@ export default function ApgujeongPage() {
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
             {landmarks.map((l, i) => (
               <FadeIn key={l.name} delay={i * 0.1}>
-                <div className="group text-center">
+                <div className="group text-center bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                   {/* height bar */}
                   <div className="relative mx-auto w-full max-w-[160px] mb-4" style={{ height: '280px' }}>
                     <div className="absolute bottom-0 w-full overflow-hidden rounded-t"
                       style={{ height: `${(l.height / maxHeight) * 100}%` }}>
                       <Image src={l.img} alt={l.name} fill className="object-cover" sizes="200px" />
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all" />
+                      <div className="absolute inset-0 bg-white/10 group-hover:bg-white/0 transition-all" />
                     </div>
                   </div>
-                  <p className="text-[#c9a962] font-serif text-2xl md:text-3xl font-light">{l.height}m</p>
-                  <p className="text-white text-sm mt-1 font-medium">{l.name}</p>
-                  <p className="text-gray-600 text-xs">{l.location}</p>
+                  <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">{l.height}m</p>
+                  <p className="text-[#1a1a1a] text-sm mt-1 font-medium">{l.name}</p>
+                  <p className="text-[#999] text-xs">{l.location}</p>
                 </div>
               </FadeIn>
             ))}
@@ -349,10 +348,10 @@ export default function ApgujeongPage() {
             className="absolute inset-0"
             speed={0.2}
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-white/30 flex items-center justify-center">
             <FadeIn className="text-center px-6">
-              <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-4 font-heading">View-Specialized Design</p>
-              <h3 className="font-serif text-2xl md:text-4xl font-light text-white">
+              <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading drop-shadow">View-Specialized Design</p>
+              <h3 className="font-serif text-2xl md:text-4xl font-light text-white drop-shadow-lg">
                 조망특화 설계 · BIM 기술 · 초고층 시공력
               </h3>
             </FadeIn>
@@ -360,27 +359,20 @@ export default function ApgujeongPage() {
         </div>
       </section>
 
-      {/* ══════ SECTION 6 — VISION (dark overlay) ══════ */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <ParallaxImage
-          src="/images/apgujeong/RAEMIAN-063s.jpg"
-          alt="원베일리 야경"
-          className="absolute inset-0"
-          speed={0.15}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+      {/* ══════ SECTION 6 — VISION ══════ */}
+      <section className="min-h-screen flex items-center justify-center bg-[#f5f5f5]">
+        <div className="text-center px-6 max-w-4xl py-32">
           <FadeIn>
-            <p className="text-[#c9a962] text-xs tracking-[5px] uppercase mb-8 font-heading">Vision</p>
+            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">Vision</p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-white">
+            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-[#1a1a1a]">
               과거의 압구정을 넘어서는 건<br />
-              오직 <span className="text-[#c9a962]">압구정 삼성</span>입니다
+              오직 <span className="text-[#2a9d8f]">압구정 삼성</span>입니다
             </h2>
           </FadeIn>
           <FadeIn delay={0.5}>
-            <p className="mt-8 text-gray-300 text-sm leading-[2] max-w-xl mx-auto">
+            <p className="mt-8 text-[#666] text-sm leading-[2] max-w-xl mx-auto">
               반세기 동안 대한민국 최고의 주거지로 군림한 압구정.
               그 역사 위에 삼성의 기술력과 비전이 더해져
               새로운 반세기의 기준을 세웁니다.
@@ -389,7 +381,7 @@ export default function ApgujeongPage() {
           <FadeIn delay={0.7}>
             <Link
               href="/"
-              className="inline-block mt-12 border border-[#c9a962] text-[#c9a962] px-10 py-4 text-sm tracking-[3px] uppercase hover:bg-[#c9a962] hover:text-black transition-all duration-500"
+              className="inline-block mt-12 border border-[#2a9d8f] text-[#2a9d8f] px-10 py-4 text-sm tracking-[3px] uppercase hover:bg-[#2a9d8f] hover:text-white transition-all duration-500 rounded"
             >
               래미안 매거진
             </Link>
