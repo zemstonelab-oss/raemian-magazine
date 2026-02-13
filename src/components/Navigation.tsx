@@ -30,8 +30,16 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl font-light tracking-[0.4em] text-gold">
-            RAEMIAN
+          <Link href="/" className="flex items-center gap-3">
+            {/* Logo bars */}
+            <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
+              <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
+              <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
+            </svg>
+            <span className="font-display text-xl font-light tracking-[0.4em] text-gray-100">
+              RAEMIAN
+            </span>
           </Link>
 
           {/* Desktop menu */}

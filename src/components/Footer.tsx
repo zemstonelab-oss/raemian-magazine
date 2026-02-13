@@ -4,7 +4,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           <div>
-            <p className="font-display text-xl font-light tracking-[0.4em] text-gold mb-4">RAEMIAN</p>
+            <div className="flex items-center gap-3 mb-4">
+              <svg width="22" height="26" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
+                <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
+                <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
+              </svg>
+              <span className="font-display text-xl font-light tracking-[0.4em] text-gray-100">RAEMIAN</span>
+            </div>
             <p className="text-sm text-gray-500 leading-relaxed">
               <span className="font-heading italic">Beyond Expectations</span><br />
               래미안이 전하는 프리미엄 라이프스타일
