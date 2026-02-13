@@ -13,29 +13,16 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero - Crossfade slideshow */}
+      {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          {[
-            '/images/apgujeong/DJI_0806-\ud3b8\uc9d1-3_\ubcf4\uc815.jpg',
-            '/images/apgujeong/DJI_0795-\ud3b8\uc9d1-2.jpg',
-          ].map((src, i) => (
-            <motion.div
-              key={src}
-              className="absolute inset-0"
-              initial={{ opacity: i === 0 ? 1 : 0 }}
-              animate={{ opacity: [i === 0 ? 1 : 0, i === 0 ? 0 : 1, i === 0 ? 1 : 0] }}
-              transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Image
-                src={src}
-                alt={`Hero ${i + 1}`}
-                fill
-                className="object-cover"
-                priority={i === 0}
-              />
-            </motion.div>
-          ))}
+          <Image
+            src="/images/apgujeong/DJI_0795-편집-2.jpg"
+            alt="Hero"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-black/30" />
         </div>
         <motion.div
