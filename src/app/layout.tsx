@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Montserrat, Noto_Sans_KR, Noto_Serif_KR } from "nex
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${cormorantGaramond.variable} ${montserrat.variable} ${notoSansKR.variable} ${notoSerifKR.variable}`}>
       <body className="font-sans">
+        <SmoothScroll />
         <Navigation />
         <main>{children}</main>
         <Footer />

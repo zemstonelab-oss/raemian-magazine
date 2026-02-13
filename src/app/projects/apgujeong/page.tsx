@@ -7,72 +7,13 @@ import {
   motion,
   useScroll,
   useTransform,
-  useInView,
 } from 'framer-motion';
 
-/* ─── helpers ─── */
-function FadeIn({
-  children,
-  className = '',
-  delay = 0,
-  direction = 'up',
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const dirs = {
-    up: { y: 60 },
-    down: { y: -60 },
-    left: { x: 60 },
-    right: { x: -60 },
-    none: {},
-  };
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, ...dirs[direction] }}
-      animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
-      transition={{ duration: 0.9, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function ParallaxImage({
-  src,
-  alt,
-  speed = 0.3,
-  className = '',
-  overlay = true,
-}: {
-  src: string;
-  alt: string;
-  speed?: number;
-  className?: string;
-  overlay?: boolean;
-}) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [`-${speed * 100}px`, `${speed * 100}px`]);
-
-  return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y }} className="absolute inset-0 scale-[1.2]">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" priority />
-      </motion.div>
-      {overlay && <div className="absolute inset-0 bg-black/40" />}
-    </div>
-  );
-}
+import LineUp from '@/components/motion/LineUp';
+import FadeIn from '@/components/motion/FadeIn';
+import ParallaxImage from '@/components/motion/ParallaxImage';
+import ImageReveal from '@/components/motion/ImageReveal';
+import CountUp from '@/components/motion/CountUp';
 
 /* ─── data ─── */
 const landmarks = [
@@ -117,14 +58,21 @@ export default function ApgujeongPage() {
       {/* ══════ SECTION 1 — HERO ══════ */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0">
-          <Image
-            src="/images/apgujeong/DJI_0806-%ED%8E%B8%EC%A7%91-3_%EB%B3%B4%EC%A0%95.jpg"
-            alt="압구정 삼성 드론 항공샷"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+          {/* Slow zoom on hero image */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{ scale: [1, 1.05] }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
+          >
+            <Image
+              src="/images/apgujeong/DJI_0806-%ED%8E%B8%EC%A7%91-3_%EB%B3%B4%EC%A0%95.jpg"
+              alt="압구정 삼성 드론 항공샷"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-white/30" />
         </motion.div>
 
@@ -174,21 +122,22 @@ export default function ApgujeongPage() {
       {/* ══════ SECTION 2 — HERITAGE ══════ */}
       <section className="relative min-h-screen flex items-center bg-[#fafafa]">
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center">
-          <FadeIn>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-lg mb-16 max-w-3xl mx-auto">
-              <Image src="/images/apgujeong/RAEMIAN-205s.jpg" alt="원베일리" fill className="object-cover" sizes="(max-width:768px) 100vw, 800px" />
-            </div>
-          </FadeIn>
+          <ImageReveal direction="bottom" className="relative aspect-[16/9] overflow-hidden rounded-lg mb-16 max-w-3xl mx-auto">
+            <Image src="/images/apgujeong/RAEMIAN-205s.jpg" alt="원베일리" fill className="object-cover" sizes="(max-width:768px) 100vw, 800px" />
+          </ImageReveal>
+
           <FadeIn>
             <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">The Legacy of Apgujeong</p>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <h2 className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8 text-[#1a1a1a]">
-              권력과 여유,<br />
-              <span className="text-[#2a9d8f]">부와 풍류</span>를<br />
-              상징하는 이름
-            </h2>
-          </FadeIn>
+
+          <LineUp
+            as="h2"
+            className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8 text-[#1a1a1a]"
+            delay={0.2}
+          >
+            {['권력과 여유,', <><span className="text-[#2a9d8f]">부와 풍류</span>를</>, '상징하는 이름']}
+          </LineUp>
+
           <FadeIn delay={0.4}>
             <p className="text-[#666] leading-[2.2] text-sm md:text-base max-w-2xl mx-auto">
               압구정은 조선시대 한명회가 한강의 절경에 반해 정자를 세운 곳입니다.
@@ -196,6 +145,7 @@ export default function ApgujeongPage() {
               그리고 지금, 대한민국 주거의 새로운 기준이 이곳에서 다시 쓰여집니다.
             </p>
           </FadeIn>
+
           <FadeIn delay={0.6}>
             <div className="mt-16 w-16 h-px bg-[#2a9d8f] mx-auto" />
           </FadeIn>
@@ -214,7 +164,7 @@ export default function ApgujeongPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f, i) => (
-              <FadeIn key={f.num} delay={i * 0.15}>
+              <FadeIn key={f.num} delay={i * 0.2} duration={1}>
                 <div className="group border border-gray-200 p-10 hover:border-[#2a9d8f]/40 hover:shadow-md transition-all duration-500 h-full bg-white rounded-lg">
                   <span className="font-serif text-[#2a9d8f] text-sm tracking-[3px] block mb-6">{f.num}</span>
                   <h3 className="font-serif text-xl md:text-2xl mb-4 text-gray-900 group-hover:text-[#2a9d8f] transition-colors">
@@ -254,17 +204,20 @@ export default function ApgujeongPage() {
 
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
             {landmarks.map((l, i) => (
-              <FadeIn key={l.name} delay={i * 0.1}>
+              <FadeIn key={l.name} delay={i * 0.15} duration={1}>
                 <div className="group text-center bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                  {/* height bar */}
+                  {/* height bar with image reveal */}
                   <div className="relative mx-auto w-full max-w-[160px] mb-4" style={{ height: '280px' }}>
-                    <div className="absolute bottom-0 w-full overflow-hidden rounded-t"
-                      style={{ height: `${(l.height / maxHeight) * 100}%` }}>
-                      <Image src={l.img} alt={l.name} fill className="object-cover" sizes="200px" />
-                      <div className="absolute inset-0 bg-white/10 group-hover:bg-white/0 transition-all" />
+                    <div className="absolute bottom-0 w-full overflow-hidden rounded-t" style={{ height: `${(l.height / maxHeight) * 100}%` }}>
+                      <ImageReveal direction="bottom" delay={i * 0.15 + 0.3} className="relative w-full h-full">
+                        <Image src={l.img} alt={l.name} fill className="object-cover" sizes="200px" />
+                        <div className="absolute inset-0 bg-white/10 group-hover:bg-white/0 transition-all" />
+                      </ImageReveal>
                     </div>
                   </div>
-                  <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">{l.height}m</p>
+                  <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">
+                    <CountUp to={l.height} suffix="m" duration={2} />
+                  </p>
                   <p className="text-[#1a1a1a] text-sm mt-1 font-medium">{l.name}</p>
                   <p className="text-[#999] text-xs">{l.location}</p>
                 </div>
@@ -277,16 +230,21 @@ export default function ApgujeongPage() {
       {/* ══════ SECTION 5 — SAMSUNG TECH (white) ══════ */}
       <section className="min-h-screen py-32 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <FadeIn className="text-center mb-20">
-            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading">Construction Technology</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-light text-gray-900">
-              기술이 만드는 차이
-            </h2>
-          </FadeIn>
+          <div className="text-center mb-20">
+            <FadeIn>
+              <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading">Construction Technology</p>
+            </FadeIn>
+            <LineUp
+              as="h2"
+              className="font-serif text-3xl md:text-5xl font-light text-gray-900"
+            >
+              {['기술이 만드는 차이']}
+            </LineUp>
+          </div>
 
           {/* DDP */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-            <FadeIn direction="left">
+            <ImageReveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                 <Image
                   src="/images/apgujeong/%EB%8F%99%EB%8C%80%EB%AC%B8%20%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%94%8C%EB%9D%BC%EC%9E%901.png"
@@ -296,25 +254,31 @@ export default function ApgujeongPage() {
                   sizes="(max-width:768px) 100vw, 50vw"
                 />
               </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div>
+            </ImageReveal>
+            <div>
+              <FadeIn direction="right">
                 <p className="text-[#2a9d8f] text-xs tracking-[4px] mb-4 font-heading">DDP — Dongdaemun Design Plaza</p>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 text-gray-900">
-                  불가능을 가능으로 만든<br />비정형 건축의 정수
-                </h3>
+              </FadeIn>
+              <LineUp
+                as="h3"
+                className="font-serif text-2xl md:text-3xl font-light mb-6 text-gray-900"
+                delay={0.3}
+              >
+                {['불가능을 가능으로 만든', '비정형 건축의 정수']}
+              </LineUp>
+              <FadeIn delay={0.5} direction="right">
                 <p className="text-gray-500 text-sm leading-[2]">
                   자하 하디드가 설계한 동대문 디자인 플라자는 45,000장의 서로 다른 외장 패널로
                   이루어진 세계 최대 규모의 비정형 건축물입니다.
                   삼성물산은 3D BIM 기술로 이 난제를 해결했습니다.
                 </p>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           </div>
 
           {/* Incheon Bridge */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="left" className="md:order-2">
+            <ImageReveal direction="right" className="md:order-2">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                 <Image
                   src="/images/apgujeong/incheon-bridge.jpg"
@@ -324,19 +288,25 @@ export default function ApgujeongPage() {
                   sizes="(max-width:768px) 100vw, 50vw"
                 />
               </div>
-            </FadeIn>
-            <FadeIn direction="right" className="md:order-1">
-              <div>
+            </ImageReveal>
+            <div className="md:order-1">
+              <FadeIn direction="left">
                 <p className="text-[#2a9d8f] text-xs tracking-[4px] mb-4 font-heading">Incheon Bridge</p>
-                <h3 className="font-serif text-2xl md:text-3xl font-light mb-6 text-gray-900">
-                  대한민국을 잇는<br />21.38km의 도전
-                </h3>
+              </FadeIn>
+              <LineUp
+                as="h3"
+                className="font-serif text-2xl md:text-3xl font-light mb-6 text-gray-900"
+                delay={0.3}
+              >
+                {['대한민국을 잇는', '21.38km의 도전']}
+              </LineUp>
+              <FadeIn delay={0.5} direction="left">
                 <p className="text-gray-500 text-sm leading-[2]">
                   국내 최장 사장교 인천대교. 삼성물산의 토목 기술력이 집약된 대한민국 대표 인프라입니다.
                   이 기술력이 압구정 삼성의 조망특화 설계와 초고층 구조에 그대로 적용됩니다.
                 </p>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           </div>
         </div>
 
@@ -347,14 +317,20 @@ export default function ApgujeongPage() {
             alt="원베일리 외관"
             className="absolute inset-0"
             speed={0.2}
+            overlayColor="bg-white/30"
           />
-          <div className="absolute inset-0 bg-white/30 flex items-center justify-center">
-            <FadeIn className="text-center px-6">
-              <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading drop-shadow">View-Specialized Design</p>
-              <h3 className="font-serif text-2xl md:text-4xl font-light text-white drop-shadow-lg">
-                조망특화 설계 · BIM 기술 · 초고층 시공력
-              </h3>
-            </FadeIn>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center px-6">
+              <FadeIn>
+                <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading drop-shadow">View-Specialized Design</p>
+              </FadeIn>
+              <LineUp
+                as="h3"
+                className="font-serif text-2xl md:text-4xl font-light text-white drop-shadow-lg"
+              >
+                {['조망특화 설계 · BIM 기술 · 초고층 시공력']}
+              </LineUp>
+            </div>
           </div>
         </div>
       </section>
@@ -365,12 +341,13 @@ export default function ApgujeongPage() {
           <FadeIn>
             <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">Vision</p>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-[#1a1a1a]">
-              과거의 압구정을 넘어서는 건<br />
-              오직 <span className="text-[#2a9d8f]">압구정 삼성</span>입니다
-            </h2>
-          </FadeIn>
+          <LineUp
+            as="h2"
+            className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-[#1a1a1a]"
+            delay={0.2}
+          >
+            {['과거의 압구정을 넘어서는 건', <span key="highlight">오직 <span className="text-[#2a9d8f]">압구정 삼성</span>입니다</span>]}
+          </LineUp>
           <FadeIn delay={0.5}>
             <p className="mt-8 text-[#666] text-sm leading-[2] max-w-xl mx-auto">
               반세기 동안 대한민국 최고의 주거지로 군림한 압구정.
