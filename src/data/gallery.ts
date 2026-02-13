@@ -7,12 +7,12 @@ export interface GalleryItem {
 }
 
 export const galleryItems: GalleryItem[] = [
-  { id: '1', title: '래미안 원베일리 외관', category: 'Architecture', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=1200&fit=crop', aspect: 'portrait' },
-  { id: '2', title: '한강 파노라마 뷰', category: 'View', image: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=1200&h=800&fit=crop', aspect: 'landscape' },
-  { id: '3', title: '프리미엄 인테리어', category: 'Interior', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=800&fit=crop', aspect: 'square' },
-  { id: '4', title: '중앙 정원', category: 'Landscape', image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=1200&fit=crop', aspect: 'portrait' },
-  { id: '5', title: '커뮤니티 라운지', category: 'Interior', image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop', aspect: 'landscape' },
-  { id: '6', title: '야경', category: 'View', image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&h=800&fit=crop', aspect: 'square' },
-  { id: '7', title: '모던 키친', category: 'Interior', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop', aspect: 'landscape' },
-  { id: '8', title: '스카이라운지', category: 'Architecture', image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=1200&fit=crop', aspect: 'portrait' },
+  { id: '1', title: '래미안 원베일리 외관', category: 'Architecture', image: '/images/apgujeong/RAEMIAN-063s.jpg', aspect: 'portrait' },
+  { id: '2', title: '한강 파노라마 뷰', category: 'View', image: '/images/apgujeong/DJI_0795-편집-2.jpg', aspect: 'landscape' },
+  { id: '3', title: '원베일리 전경', category: 'Architecture', image: '/images/apgujeong/RAEMIAN-004s.jpg', aspect: 'square' },
+  { id: '4', title: '원베일리 야경', category: 'View', image: '/images/apgujeong/RAEMIAN-057s.jpg', aspect: 'portrait' },
+  { id: '5', title: '도시와 자연의 조화', category: 'View', image: '/images/apgujeong/DJI_0806-편집-3_보정.jpg', aspect: 'landscape' },
+  { id: '6', title: '원베일리 타워', category: 'Architecture', image: '/images/apgujeong/RAEMIAN-116s.jpg', aspect: 'square' },
+  { id: '7', title: '한강변 스카이라인', category: 'View', image: '/images/apgujeong/RAEMIAN-197s.jpg', aspect: 'landscape' },
+  { id: '8', title: '원베일리 랜드마크', category: 'Architecture', image: '/images/apgujeong/RAEMIAN-205s.jpg', aspect: 'portrait' },
 ];

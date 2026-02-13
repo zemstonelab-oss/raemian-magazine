@@ -23,7 +23,7 @@ export const articles: Article[] = [
     categoryLabel: 'Architecture',
     date: '2026.02.10',
     author: '래미안 에디터',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop',
+    image: '/images/apgujeong/RAEMIAN-063s.jpg',
     excerpt: '한강변 최고의 입지에서 펼쳐지는 래미안 원베일리의 프리미엄 라이프스타일을 만나보세요.',
     content: [
       '서울 서초구 반포동, 한강을 마주한 최고의 입지에 래미안 원베일리가 자리잡고 있습니다. 2,990세대 규모의 이 단지는 래미안이 추구하는 프리미엄 주거의 정수를 보여줍니다.',
@@ -41,7 +41,7 @@ export const articles: Article[] = [
     categoryLabel: 'Lifestyle',
     date: '2026.01.28',
     author: '김소현 에디터',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
+    image: '/images/apgujeong/RAEMIAN-116s.jpg',
     excerpt: '2026년 주거 인테리어의 핵심 키워드는 "미니멀 럭셔리". 적게, 그러나 깊게.',
     content: [
       '2026년 인테리어 트렌드의 핵심은 "미니멀 럭셔리"입니다. 화려한 장식 대신 소재의 질감과 공간의 비례로 품격을 만들어내는 것이 핵심입니다.',
@@ -58,7 +58,7 @@ export const articles: Article[] = [
     categoryLabel: 'Film',
     date: '2026.01.15',
     author: '래미안 브랜드팀',
-    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=800&fit=crop',
+    image: '/images/apgujeong/RAEMIAN-141s.jpg',
     excerpt: '래미안 브랜드 필름 "당신의 내일을 짓다" 비하인드 스토리와 제작 과정을 공개합니다.',
     content: [
       '래미안의 새로운 브랜드 필름 "당신의 내일을 짓다"가 공개되었습니다. 이 필름은 단순한 광고를 넘어, 래미안이 추구하는 주거 철학을 담아낸 작품입니다.',
@@ -75,7 +75,7 @@ export const articles: Article[] = [
     categoryLabel: 'Community',
     date: '2026.01.05',
     author: '박지윤 에디터',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=800&fit=crop',
+    image: '/images/apgujeong/RAEMIAN-205s.jpg',
     excerpt: '반포 주민들이 추천하는 카페, 레스토랑, 문화 공간을 소개합니다.',
     content: [
       '반포는 서울에서도 가장 품격 있는 주거지 중 하나로 꼽힙니다. 한강과 가까운 입지, 우수한 학군, 그리고 풍부한 문화 인프라가 어우러진 이곳은 많은 이들이 꿈꾸는 동네입니다.',
