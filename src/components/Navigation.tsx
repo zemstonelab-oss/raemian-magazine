@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,6 +15,9 @@ const navLinks = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  const isDarkHero = isHome || pathname.startsWith('/projects/');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -25,7 +29,7 @@ export default function Navigation() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
+          scrolled || !isDarkHero ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -37,7 +41,7 @@ export default function Navigation() {
               <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
             </svg>
             <span className={`font-display text-xl font-light tracking-[0.4em] transition-colors duration-500 ${
-              scrolled ? 'text-gray-900' : 'text-white'
+              scrolled || !isDarkHero ? 'text-gray-900' : 'text-white'
             }`}>
               RAEMIAN
             </span>
@@ -50,7 +54,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`font-display text-sm tracking-[0.15em] uppercase transition-colors duration-300 ${
-                  scrolled
+                  scrolled || !isDarkHero
                     ? 'text-gray-600 hover:text-teal'
                     : 'text-white/80 hover:text-white'
                 }`}
@@ -66,9 +70,9 @@ export default function Navigation() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="메뉴"
           >
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
           </button>
         </div>
       </nav>
