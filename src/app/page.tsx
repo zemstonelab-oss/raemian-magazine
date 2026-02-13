@@ -31,13 +31,9 @@ export default function Home() {
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
           className="relative text-center z-10 px-6"
         >
-          <p className="font-display text-sm tracking-[0.4em] uppercase text-white mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Premium Lifestyle Magazine</p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.15em] text-white mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             RAEMIAN<br />MAGAZINE
           </h1>
-          <p className="text-sm md:text-base text-white/90 font-light tracking-wide max-w-lg mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            래미안이 전하는 프리미엄 라이프스타일과 건축의 이야기
-          </p>
         </motion.div>
 
         {/* Scroll indicator */}
