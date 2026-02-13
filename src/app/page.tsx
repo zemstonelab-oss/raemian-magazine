@@ -1,8 +1,9 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import ArticleCard from '@/components/ArticleCard';
 import { articles } from '@/data/articles';
@@ -11,31 +12,75 @@ export default function Home() {
   const featured = articles.find((a) => a.featured) || articles[0];
   const latest = articles.slice(0, 4);
 
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  // Left panel slides up and fades out
+  const leftY = useTransform(scrollYProgress, [0, 0.5], ['0%', '-100%']);
+  const leftOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  // Image expands to full width
+  const imageWidth = useTransform(scrollYProgress, [0, 0.5], ['50%', '100%']);
+  // On mobile, image is always full width (handled by CSS), so imageWidth only matters for md+
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/apgujeong/DJI_0795-편집-2.jpg"
-            alt="Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/20" />
-        </div>
-        {/* Clean hero - image only */}
+      {/* Hero - Split Layout */}
+      <div ref={heroRef} className="h-[200vh] relative">
+        <section className="sticky top-0 h-screen flex flex-col md:flex-row overflow-hidden">
+          {/* Left Panel - Logo & Tagline */}
+          <motion.div
+            style={{ y: leftY, opacity: leftOpacity }}
+            className="relative z-10 w-full md:w-1/2 h-[40vh] md:h-full bg-white flex items-center justify-center"
+          >
+            <div className="flex flex-col items-center gap-6">
+              {/* Raemian Logo SVG - larger for hero */}
+              <svg width="46" height="52" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
+                <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
+                <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
+              </svg>
+              <span className="font-heading text-[11px] tracking-[0.45em] uppercase text-gray-800">
+                Raemian
+              </span>
+              {/* Divider */}
+              <div className="w-8 h-px bg-gray-300" />
+              {/* Tagline */}
+              <span
+                className="text-sm italic text-gray-400"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              >
+                Beyond Expectations
+              </span>
+            </div>
+          </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-white/60 to-transparent" />
-        </motion.div>
-      </section>
+          {/* Right Panel - Aerial Image */}
+          <motion.div
+            style={{ width: imageWidth }}
+            className="relative h-[60vh] max-md:!w-full md:h-full md:absolute md:right-0 md:top-0"
+          >
+            <Image
+              src="/images/apgujeong/DJI_0795-편집-2.jpg"
+              alt="래미안 항공뷰"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+          >
+            <div className="w-px h-12 bg-gradient-to-b from-gray-400/60 to-transparent" />
+          </motion.div>
+        </section>
+      </div>
 
       {/* Latest Articles */}
       <section className="max-w-7xl mx-auto px-6 py-24">
