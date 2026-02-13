@@ -9,6 +9,7 @@ const navLinks = [
   { href: '/magazine', label: 'Magazine' },
   { href: '/about', label: 'About' },
   { href: '/gallery', label: 'Gallery' },
+  { href: '/projects/apgujeong', label: 'Projects' },
 ];
 
 export default function Navigation() {
