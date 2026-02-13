@@ -23,18 +23,9 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative text-center z-10 px-6"
-        >
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.15em] text-white mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            RAEMIAN<br />MAGAZINE
-          </h1>
-        </motion.div>
+        {/* Clean hero - image only */}
 
         {/* Scroll indicator */}
         <motion.div
