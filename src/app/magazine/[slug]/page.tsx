@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { articles } from '@/data/articles';
@@ -18,7 +17,8 @@ export default function ArticleDetail({ params }: { params: { slug: string } }) 
     <div className="bg-white">
       {/* Hero Image */}
       <div className="relative h-[60vh] md:h-[70vh]">
-        <Image src={article.image} alt={article.title} fill className="object-cover" priority sizes="100vw" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
           <span className="text-xs tracking-[0.2em] uppercase text-[#c9a962]">{article.categoryLabel}</span>
@@ -42,7 +42,8 @@ export default function ArticleDetail({ params }: { params: { slug: string } }) 
           {related.map((r) => (
             <Link key={r.id} href={`/magazine/${r.id}`} className="group">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                <Image src={r.image} alt={r.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="33vw" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <p className="text-xs tracking-[0.15em] uppercase text-teal mt-4">{r.categoryLabel}</p>
               <p className="font-serif text-base text-gray-800 mt-1 group-hover:text-teal transition-colors">{r.title}</p>

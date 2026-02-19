@@ -26,14 +26,18 @@ export default function ImageReveal({
   duration = 1.2,
 }: ImageRevealProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const clip = clipPaths[direction];
 
   return (
     <motion.div
       ref={ref}
-      initial={{ clipPath: clip.hidden }}
-      animate={inView ? { clipPath: clip.visible } : {}}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={{
+        hidden: { clipPath: clip.hidden },
+        visible: { clipPath: clip.visible },
+      }}
       transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
     >

@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   motion,
@@ -11,19 +10,16 @@ import {
 
 import LineUp from '@/components/motion/LineUp';
 import FadeIn from '@/components/motion/FadeIn';
-import ParallaxImage from '@/components/motion/ParallaxImage';
-import ImageReveal from '@/components/motion/ImageReveal';
 import CountUp from '@/components/motion/CountUp';
 
 /* ─── data ─── */
 const landmarks = [
-  { name: '부르즈 칼리파', location: '두바이', height: 828, img: '/images/apgujeong/burj-khalifa.jpg' },
-  { name: '페트로나스 타워', location: '쿠알라룸푸르', height: 452, img: '/images/apgujeong/%ED%8E%98%ED%8A%B8%EB%A1%9C%EB%82%98%EC%8A%A4%ED%83%80%EC%9B%8C_1.jpg' },
-  { name: '타이베이 101', location: '타이베이', height: 508, img: '/images/apgujeong/%ED%83%80%EC%9D%B4%EB%B2%A0%EC%9D%B4101.jpg' },
-  { name: '라흐타 센터', location: '상트페테르부르크', height: 462, img: '/images/apgujeong/%EB%9D%BC%ED%9D%90%ED%83%80%EC%84%BC%ED%84%B0.jpg' },
+  { name: '부르즈 칼리파', location: '두바이', height: 828, img: '/images/landmarks/burj-khalifa-04.jpg' },
+  { name: '메르데카 118', location: '쿠알라룸푸르', height: 679, img: '/images/landmarks/merdeka-01.jpg' },
+  { name: '타이베이 101', location: '타이베이', height: 508, img: '/images/landmarks/taipei101-03.jpg' },
+  { name: '라흐타 센터', location: '상트페테르부르크', height: 462, img: '/images/landmarks/lakhta-02.jpg' },
+  { name: '페트로나스 타워', location: '쿠알라룸푸르', height: 452, img: '/images/landmarks/petronas-03.jpg' },
 ];
-
-const maxHeight = 828;
 
 const features = [
   {
@@ -57,47 +53,55 @@ export default function ApgujeongPage() {
     <main className="text-gray-900 overflow-x-hidden">
       {/* ══════ SECTION 1 — HERO ══════ */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div style={{ scale: heroScale }} className="absolute inset-0">
-          {/* Slow zoom on hero image */}
+        {/* Background image — fades in first */}
+        <motion.div
+          style={{ scale: heroScale }}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        >
           <motion.div
             className="absolute inset-0"
             animate={{ scale: [1, 1.05] }}
             transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
           >
-            <Image
-              src="/images/apgujeong/DJI_0806-%ED%8E%B8%EC%A7%91-3_%EB%B3%B4%EC%A0%95.jpg"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/apgujeong/DJI_0806-aerial.jpg"
               alt="압구정 삼성 드론 항공샷"
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-white/30" />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.4) 100%)' }} />
         </motion.div>
 
+        {/* Text — appears after background */}
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 text-center px-6">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            className="text-[#2a9d8f] text-xs tracking-[6px] uppercase mb-6 font-heading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="text-white/90 text-[10px] md:text-xs tracking-[0.3em] uppercase font-heading font-semibold mb-5"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
           >
             Beyond Expectations
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1.2 }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight text-white drop-shadow-lg"
+            transition={{ delay: 1.6, duration: 1, ease: 'easeOut' }}
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight text-white"
+            style={{ textShadow: '0 4px 40px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.5)' }}
           >
             압구정 삼성
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="mt-6 text-white/80 text-sm tracking-[3px] font-display font-light drop-shadow"
+            transition={{ delay: 2.2, duration: 0.8 }}
+            className="mt-5 text-white/90 text-[11px] md:text-sm tracking-[0.3em] font-display font-light"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}
           >
             RAEMIAN APGUJEONG SAMSUNG
           </motion.p>
@@ -122,9 +126,10 @@ export default function ApgujeongPage() {
       {/* ══════ SECTION 2 — HERITAGE ══════ */}
       <section className="relative min-h-screen flex items-center bg-[#fafafa]">
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 text-center">
-          <ImageReveal direction="bottom" className="relative aspect-[16/9] overflow-hidden rounded-lg mb-16 max-w-3xl mx-auto">
-            <Image src="/images/apgujeong/RAEMIAN-205s.jpg" alt="원베일리" fill className="object-cover" sizes="(max-width:768px) 100vw, 800px" />
-          </ImageReveal>
+          <FadeIn className="relative aspect-[16/9] overflow-hidden rounded-lg mb-16 max-w-3xl mx-auto">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/apgujeong/RAEMIAN-205s.jpg" alt="원베일리" className="absolute inset-0 w-full h-full object-cover" />
+          </FadeIn>
 
           <FadeIn>
             <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">The Legacy of Apgujeong</p>
@@ -135,7 +140,7 @@ export default function ApgujeongPage() {
             className="font-serif text-3xl md:text-5xl font-light leading-relaxed mb-8 text-[#1a1a1a]"
             delay={0.2}
           >
-            {['권력과 여유,', <><span className="text-[#2a9d8f]">부와 풍류</span>를</>, '상징하는 이름']}
+            {['권력과 여유,', <span key="line2"><span className="text-[#2a9d8f]">부와 풍류</span>를</span>, '상징하는 이름']}
           </LineUp>
 
           <FadeIn delay={0.4}>
@@ -179,13 +184,24 @@ export default function ApgujeongPage() {
       </section>
 
       {/* ══════ SECTION 3.5 — Feature Image ══════ */}
-      <section className="relative h-[70vh]">
-        <ParallaxImage
-          src="/images/apgujeong/DJI_0795-%ED%8E%B8%EC%A7%91-2.jpg"
-          alt="압구정 항공뷰"
-          className="absolute inset-0"
-          speed={0.2}
-        />
+      <section
+        className="relative h-[70vh]"
+        style={{
+          backgroundImage: 'url(/images/apgujeong/DJI_0795-aerial.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <FadeIn className="text-center px-6">
+            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading drop-shadow">Aerial View</p>
+            <h3 className="font-serif text-2xl md:text-4xl font-light text-white drop-shadow-lg">
+              한강과 서울숲이 만나는 곳
+            </h3>
+          </FadeIn>
+        </div>
       </section>
 
       {/* ══════ SECTION 4 — GLOBAL LANDMARKS ══════ */}
@@ -202,24 +218,27 @@ export default function ApgujeongPage() {
             </p>
           </FadeIn>
 
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
             {landmarks.map((l, i) => (
-              <FadeIn key={l.name} delay={i * 0.15} duration={1}>
-                <div className="group text-center bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                  {/* height bar with image reveal */}
-                  <div className="relative mx-auto w-full max-w-[160px] mb-4" style={{ height: '280px' }}>
-                    <div className="absolute bottom-0 w-full overflow-hidden rounded-t" style={{ height: `${(l.height / maxHeight) * 100}%` }}>
-                      <ImageReveal direction="bottom" delay={i * 0.15 + 0.3} className="relative w-full h-full">
-                        <Image src={l.img} alt={l.name} fill className="object-cover" sizes="200px" />
-                        <div className="absolute inset-0 bg-white/10 group-hover:bg-white/0 transition-all" />
-                      </ImageReveal>
-                    </div>
+              <FadeIn key={l.name} delay={i * 0.12} duration={1}>
+                <div className="group overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-lg transition-shadow duration-500">
+                  <div
+                    className="aspect-[3/4] w-full"
+                    style={{
+                      backgroundImage: `url(${l.img})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  >
+                    <div className="w-full h-full bg-black/15 group-hover:bg-black/0 transition-all duration-500" />
                   </div>
-                  <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">
-                    <CountUp to={l.height} suffix="m" duration={2} />
-                  </p>
-                  <p className="text-[#1a1a1a] text-sm mt-1 font-medium">{l.name}</p>
-                  <p className="text-[#999] text-xs">{l.location}</p>
+                  <div className="p-4 text-center">
+                    <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">
+                      <CountUp to={l.height} suffix="m" duration={2} />
+                    </p>
+                    <p className="text-[#1a1a1a] text-sm mt-1 font-medium">{l.name}</p>
+                    <p className="text-[#999] text-xs">{l.location}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -244,17 +263,12 @@ export default function ApgujeongPage() {
 
           {/* DDP */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-            <ImageReveal direction="left">
+            <FadeIn direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                <Image
-                  src="/images/apgujeong/%EB%8F%99%EB%8C%80%EB%AC%B8%20%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%94%8C%EB%9D%BC%EC%9E%901.png"
-                  alt="동대문 디자인 플라자"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:768px) 100vw, 50vw"
-                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/landmarks/ddp-01.png" alt="동대문 디자인 플라자" className="absolute inset-0 w-full h-full object-cover" />
               </div>
-            </ImageReveal>
+            </FadeIn>
             <div>
               <FadeIn direction="right">
                 <p className="text-[#2a9d8f] text-xs tracking-[4px] mb-4 font-heading">DDP — Dongdaemun Design Plaza</p>
@@ -278,17 +292,12 @@ export default function ApgujeongPage() {
 
           {/* Incheon Bridge */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <ImageReveal direction="right" className="md:order-2">
+            <FadeIn direction="right" className="md:order-2">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                <Image
-                  src="/images/apgujeong/incheon-bridge.jpg"
-                  alt="인천대교"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:768px) 100vw, 50vw"
-                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/landmarks/incheon-bridge-01.jpg" alt="인천대교" className="absolute inset-0 w-full h-full object-cover" />
               </div>
-            </ImageReveal>
+            </FadeIn>
             <div className="md:order-1">
               <FadeIn direction="left">
                 <p className="text-[#2a9d8f] text-xs tracking-[4px] mb-4 font-heading">Incheon Bridge</p>
@@ -311,14 +320,16 @@ export default function ApgujeongPage() {
         </div>
 
         {/* Full-width Raemian image */}
-        <div className="mt-24 relative h-[60vh]">
-          <ParallaxImage
-            src="/images/apgujeong/RAEMIAN-116s.jpg"
-            alt="원베일리 외관"
-            className="absolute inset-0"
-            speed={0.2}
-            overlayColor="bg-white/30"
-          />
+        <div
+          className="mt-24 relative h-[60vh]"
+          style={{
+            backgroundImage: 'url(/images/apgujeong/RAEMIAN-116s.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+          }}
+        >
+          <div className="absolute inset-0 bg-white/30" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-6">
               <FadeIn>
@@ -336,20 +347,29 @@ export default function ApgujeongPage() {
       </section>
 
       {/* ══════ SECTION 6 — VISION ══════ */}
-      <section className="min-h-screen flex items-center justify-center bg-[#f5f5f5]">
-        <div className="text-center px-6 max-w-4xl py-32">
+      <section
+        className="min-h-screen flex items-center justify-center relative"
+        style={{
+          backgroundImage: 'url(/images/apgujeong/RAEMIAN-004s.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        <div className="relative z-10 text-center px-6 max-w-4xl py-32">
           <FadeIn>
-            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading">Vision</p>
+            <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-8 font-heading" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>Vision</p>
           </FadeIn>
           <LineUp
             as="h2"
-            className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-[#1a1a1a]"
+            className="font-serif text-3xl md:text-5xl lg:text-6xl font-light leading-snug text-white"
             delay={0.2}
           >
             {['과거의 압구정을 넘어서는 건', <span key="highlight">오직 <span className="text-[#2a9d8f]">압구정 삼성</span>입니다</span>]}
           </LineUp>
           <FadeIn delay={0.5}>
-            <p className="mt-8 text-[#666] text-sm leading-[2] max-w-xl mx-auto">
+            <p className="mt-8 text-white/70 text-sm leading-[2] max-w-xl mx-auto">
               반세기 동안 대한민국 최고의 주거지로 군림한 압구정.
               그 역사 위에 삼성의 기술력과 비전이 더해져
               새로운 반세기의 기준을 세웁니다.
@@ -358,7 +378,7 @@ export default function ApgujeongPage() {
           <FadeIn delay={0.7}>
             <Link
               href="/"
-              className="inline-block mt-12 border border-[#2a9d8f] text-[#2a9d8f] px-10 py-4 text-sm tracking-[3px] uppercase hover:bg-[#2a9d8f] hover:text-white transition-all duration-500 rounded"
+              className="inline-block mt-12 border border-white/60 text-white px-10 py-4 text-sm tracking-[3px] uppercase hover:bg-[#2a9d8f] hover:border-[#2a9d8f] transition-all duration-500 rounded"
             >
               래미안 매거진
             </Link>

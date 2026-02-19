@@ -19,7 +19,7 @@ export default function FadeIn({
   duration = 1,
 }: FadeInProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const dirs = {
     up: { y: 60 },
     down: { y: -60 },
@@ -31,8 +31,12 @@ export default function FadeIn({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, ...dirs[direction] }}
-      animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={{
+        hidden: { opacity: 0, ...dirs[direction] },
+        visible: { opacity: 1, x: 0, y: 0 },
+      }}
       transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
     >

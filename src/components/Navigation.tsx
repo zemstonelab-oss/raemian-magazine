@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import RaemianLogo from '@/components/RaemianLogo';
 
 const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/magazine', label: 'Magazine' },
-  { href: '/projects/apgujeong', label: 'Projects' },
+  { href: '/projects', label: 'Projects' },
 ];
 
 export default function Navigation() {
@@ -17,7 +18,7 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const isDarkHero = isHome || pathname.startsWith('/projects/');
+  const isDarkHero = isHome || pathname.startsWith('/projects');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -33,18 +34,11 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            {/* Logo bars */}
-            <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
-              <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
-              <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
-            </svg>
-            <span className={`font-display text-xl font-light tracking-[0.4em] transition-colors duration-500 ${
-              scrolled || !isDarkHero ? 'text-gray-900' : 'text-white'
-            }`}>
-              RAEMIAN
-            </span>
+          <Link href="/" className="flex items-center">
+            <RaemianLogo
+              size={0.55}
+              color={scrolled || !isDarkHero ? 'default' : 'white'}
+            />
           </Link>
 
           {/* Desktop menu */}
@@ -58,6 +52,7 @@ export default function Navigation() {
                     ? 'text-gray-600 hover:text-teal'
                     : 'text-white/80 hover:text-white'
                 }`}
+                style={!scrolled && isDarkHero ? { textShadow: '0 1px 10px rgba(0,0,0,0.7)' } : undefined}
               >
                 {link.label}
               </Link>

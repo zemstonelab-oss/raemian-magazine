@@ -20,7 +20,7 @@ export default function LineUp({
   delay = 0.2,
 }: LineUpProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
 
   // Extract lines from children — if array passed directly, each element is a line
   const lines = Array.isArray(children) ? children : extractLines(children);

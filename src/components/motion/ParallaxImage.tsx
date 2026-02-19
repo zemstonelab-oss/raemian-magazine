@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 
 interface ParallaxImageProps {
   src: string;
@@ -39,10 +38,12 @@ export default function ParallaxImage({
             animate={{ scale: [1, 1.05] }}
             transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
           >
-            <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" priority />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
           </motion.div>
         ) : (
-          <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" priority />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
         )}
       </motion.div>
       {overlay && <div className={`absolute inset-0 ${overlayColor}`} />}

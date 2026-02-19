@@ -1,16 +1,13 @@
+import RaemianLogo from '@/components/RaemianLogo';
+
 export default function Footer() {
   return (
     <footer className="bg-[#f5f5f5] border-t border-gray-200 py-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <svg width="22" height="26" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
-                <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
-                <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
-              </svg>
-              <span className="font-display text-xl font-light tracking-[0.4em] text-gray-900">RAEMIAN</span>
+            <div className="mb-4">
+              <RaemianLogo size={0.7} />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
               <span className="font-heading italic">Beyond Expectations</span><br />

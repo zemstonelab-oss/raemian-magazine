@@ -1,11 +1,12 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import RaemianLogo from '@/components/RaemianLogo';
 import ArticleCard from '@/components/ArticleCard';
+import Preloader from '@/components/Preloader';
 import { articles } from '@/data/articles';
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
 
   return (
     <>
+      <Preloader />
       {/* Hero - Split Layout */}
       <div ref={heroRef} className="h-[200vh] relative">
         <section className="sticky top-0 h-screen flex flex-col md:flex-row overflow-hidden">
@@ -36,15 +38,7 @@ export default function Home() {
             className="relative z-10 w-full md:w-1/2 h-[40vh] md:h-full bg-white flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-6">
-              {/* Raemian Logo SVG - larger for hero */}
-              <svg width="46" height="52" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="0" width="7" height="32" fill="#b0a890" />
-                <rect x="10" y="0" width="7" height="32" fill="#2a9d8f" />
-                <rect x="20" y="0" width="7" height="32" fill="#2a9d8f" />
-              </svg>
-              <span className="font-heading text-[11px] tracking-[0.45em] uppercase text-gray-800">
-                Raemian
-              </span>
+              <RaemianLogo size={1.2} />
               {/* Divider */}
               <div className="w-8 h-px bg-gray-300" />
               {/* Tagline */}
@@ -62,12 +56,11 @@ export default function Home() {
             style={{ width: imageWidth }}
             className="relative h-[60vh] max-md:!w-full md:h-full md:absolute md:right-0 md:top-0"
           >
-            <Image
-              src="/images/apgujeong/DJI_0795-편집-2.jpg"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/apgujeong/DJI_0795-aerial.jpg"
               alt="래미안 항공뷰"
-              fill
-              className="object-cover"
-              priority
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </motion.div>
 
@@ -117,12 +110,11 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 py-24">
         <AnimatedSection>
           <Link href={`/magazine/${featured.id}`} className="group block relative overflow-hidden aspect-[16/7] rounded-lg shadow-lg">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={featured.image}
               alt={featured.title}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              sizes="100vw"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
