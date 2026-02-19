@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import AnimatedSection from '@/components/AnimatedSection';
 import FadeIn from '@/components/motion/FadeIn';
 import { projects } from '@/data/projects';
 

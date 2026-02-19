@@ -7,7 +7,7 @@ interface FadeInProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  direction?: 'up' | 'down' | 'left' | 'right' | 'bottom' | 'none';
   duration?: number;
 }
 
@@ -23,6 +23,7 @@ export default function FadeIn({
   const dirs = {
     up: { y: 60 },
     down: { y: -60 },
+    bottom: { y: 60 },
     left: { x: 60 },
     right: { x: -60 },
     none: {},
