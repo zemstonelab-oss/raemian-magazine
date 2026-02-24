@@ -30,7 +30,7 @@ export default function Navigation() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled || !isDarkHero ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
+          menuOpen ? 'bg-transparent' : scrolled || !isDarkHero ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -59,15 +59,24 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger / close */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden p-3"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="메뉴"
           >
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-px transition-all duration-300 ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'} ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
+            {menuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                <line x1="5" y1="5" x2="19" y2="19" />
+                <line x1="19" y1="5" x2="5" y2="19" />
+              </svg>
+            ) : (
+              <div className="flex flex-col gap-1.5">
+                <span className={`block w-6 h-0.5 rounded-full ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'}`} />
+                <span className={`block w-6 h-0.5 rounded-full ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'}`} />
+                <span className={`block w-6 h-0.5 rounded-full ${scrolled || !isDarkHero ? 'bg-gray-800' : 'bg-white'}`} />
+              </div>
+            )}
           </button>
         </div>
       </nav>
@@ -79,7 +88,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-white/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-black/90 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link, i) => (
               <motion.div
@@ -91,7 +100,7 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-display text-2xl font-light tracking-[0.2em] text-gray-800 hover:text-teal transition-colors"
+                  className="font-display text-2xl font-light tracking-[0.2em] text-white hover:text-[#2a9d8f] transition-colors"
                 >
                   {link.label}
                 </Link>

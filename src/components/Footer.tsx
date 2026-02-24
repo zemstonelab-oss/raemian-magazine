@@ -14,7 +14,7 @@ export default function Footer() {
               래미안이 전하는 프리미엄 라이프스타일
             </p>
           </div>
-          <div className="flex gap-12 text-sm text-gray-500">
+          <div className="flex gap-8 md:gap-12 text-sm text-gray-500">
             <div className="flex flex-col gap-3">
               <span className="text-teal text-xs tracking-[0.2em] uppercase mb-1">Menu</span>
               <a href="/" className="hover:text-teal transition-colors">Home</a>

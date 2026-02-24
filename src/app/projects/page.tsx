@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   return (
     <main className="text-gray-900">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#1a1a1a]">
+      <section className="relative h-[35vh] md:h-[60vh] flex items-center justify-center overflow-hidden bg-[#1a1a1a]">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}

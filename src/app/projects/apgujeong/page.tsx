@@ -170,7 +170,7 @@ export default function ApgujeongPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f, i) => (
               <FadeIn key={f.num} delay={i * 0.2} duration={1}>
-                <div className="group border border-gray-200 p-10 hover:border-[#2a9d8f]/40 hover:shadow-md transition-all duration-500 h-full bg-white rounded-lg">
+                <div className="group border border-gray-200 p-6 md:p-10 hover:border-[#2a9d8f]/40 hover:shadow-md transition-all duration-500 h-full bg-white rounded-lg">
                   <span className="font-serif text-[#2a9d8f] text-sm tracking-[3px] block mb-6">{f.num}</span>
                   <h3 className="font-serif text-xl md:text-2xl mb-4 text-gray-900 group-hover:text-[#2a9d8f] transition-colors">
                     {f.title}
@@ -218,9 +218,9 @@ export default function ApgujeongPage() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
+          <div className="flex md:grid md:grid-cols-5 gap-4 md:gap-5 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
             {landmarks.map((l, i) => (
-              <FadeIn key={l.name} delay={i * 0.12} duration={1}>
+              <FadeIn key={l.name} delay={i * 0.12} duration={1} className="min-w-full sm:min-w-full md:min-w-0 snap-center shrink-0 md:shrink">
                 <div className="group overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-lg transition-shadow duration-500">
                   <div
                     className="aspect-[3/4] w-full"
@@ -232,12 +232,12 @@ export default function ApgujeongPage() {
                   >
                     <div className="w-full h-full bg-black/15 group-hover:bg-black/0 transition-all duration-500" />
                   </div>
-                  <div className="p-4 text-center">
-                    <p className="text-[#2a9d8f] font-serif text-2xl md:text-3xl font-light">
+                  <div className="p-3 md:p-4 text-center">
+                    <p className="text-[#2a9d8f] font-serif text-xl sm:text-2xl md:text-3xl font-light">
                       <CountUp to={l.height} suffix="m" duration={2} />
                     </p>
-                    <p className="text-[#1a1a1a] text-sm mt-1 font-medium">{l.name}</p>
-                    <p className="text-[#999] text-xs">{l.location}</p>
+                    <p className="text-[#1a1a1a] text-xs sm:text-sm mt-1 font-medium">{l.name}</p>
+                    <p className="text-[#999] text-[10px] sm:text-xs">{l.location}</p>
                   </div>
                 </div>
               </FadeIn>

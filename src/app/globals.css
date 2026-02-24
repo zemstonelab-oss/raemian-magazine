@@ -44,3 +44,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2a9d8f;
 }
+
+/* 모바일 스와이프 스크롤바 숨기기 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* iOS/모바일 터치 기기에서 background-attachment: fixed 미지원 대응 */
+@media (hover: none) and (pointer: coarse) {
+  section,
+  div {
+    background-attachment: scroll !important;
+  }
+}

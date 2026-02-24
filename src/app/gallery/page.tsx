@@ -33,10 +33,10 @@ export default function GalleryPage() {
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end p-6">
-                  <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:from-transparent md:via-transparent md:bg-black/0 md:group-hover:bg-black/40 transition-all duration-500 flex items-end p-4 md:p-6">
+                  <div className="translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500">
                     <span className="text-xs tracking-[0.15em] uppercase text-[#c9a962]">{item.category}</span>
-                    <p className="text-white font-serif text-lg mt-1">{item.title}</p>
+                    <p className="text-white font-serif text-base md:text-lg mt-1">{item.title}</p>
                   </div>
                 </div>
               </div>

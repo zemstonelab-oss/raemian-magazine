@@ -160,7 +160,7 @@ export default function OnePentasPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f, i) => (
               <FadeIn key={f.num} delay={i * 0.2} duration={1}>
-                <div className="group border border-gray-200 p-10 hover:border-[#2a9d8f]/40 hover:shadow-md transition-all duration-500 h-full bg-white rounded-lg">
+                <div className="group border border-gray-200 p-6 md:p-10 hover:border-[#2a9d8f]/40 hover:shadow-md transition-all duration-500 h-full bg-white rounded-lg">
                   <span className="font-serif text-[#2a9d8f] text-sm tracking-[3px] block mb-6">{f.num}</span>
                   <h3 className="font-serif text-xl md:text-2xl mb-4 text-gray-900 group-hover:text-[#2a9d8f] transition-colors">
                     {f.title}
@@ -259,21 +259,26 @@ export default function OnePentasPage() {
       </section>
 
       {/* ══════ STATS ══════ */}
-      <section className="py-32 px-6 bg-[#fafafa]">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative py-32 px-6 overflow-hidden">
+        <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/onepentas/highrise-01.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
           <FadeIn className="text-center mb-16">
             <p className="text-[#2a9d8f] text-xs tracking-[5px] uppercase mb-4 font-heading">At a Glance</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-[#1a1a1a]">주요 수치</h2>
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-white">주요 수치</h2>
           </FadeIn>
 
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {stats.map((s, i) => (
               <FadeIn key={s.label} delay={i * 0.2}>
                 <div className="text-center">
                   <p className="text-[#2a9d8f] font-serif text-3xl md:text-5xl font-light">
                     <CountUp to={s.value} suffix={s.suffix} duration={2} />
                   </p>
-                  <p className="text-gray-500 text-sm mt-2">{s.label}</p>
+                  <p className="text-gray-300 text-sm mt-2">{s.label}</p>
                 </div>
               </FadeIn>
             ))}
